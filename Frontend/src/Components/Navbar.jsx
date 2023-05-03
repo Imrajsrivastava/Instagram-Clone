@@ -63,11 +63,12 @@ export default function Navbar() {
               
                 <NavLink to="/profile">Profile</NavLink>
                 <NavLink to="/signup">SignUp</NavLink>
-                <NavLink to="signin">SignIn</NavLink>
+                <NavLink to="/signin">SignIn</NavLink>
+                <NavLink to="/createPost">Create Post</NavLink>
               
             </HStack>
           </HStack>
-          <Flex alignItems={'center'}>
+          {/* <Flex alignItems={'center'}>
             <Menu>
               <MenuButton
                 as={Button}
@@ -89,7 +90,7 @@ export default function Navbar() {
                 <MenuItem>Link 3</MenuItem>
               </MenuList>
             </Menu>
-          </Flex>
+          </Flex> */}
         </Flex>
 
         {isOpen ? (

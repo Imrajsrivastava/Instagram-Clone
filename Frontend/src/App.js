@@ -3,12 +3,13 @@ import './App.css';
 // import { Navbar } from './Components/Navbar';
 import Navbar from './Components/Navbar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Home } from './Components/Home';
+import Home from './Components/Home';
 import SignIn from './Components/SignIn'
 import Signup from './Components/Signup';
 import { Profile } from './Components/Profile';
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
+import { Createpost } from './Components/Createpost';
 
 
 
@@ -23,6 +24,7 @@ function App() {
     <Route path='/signin' element={<SignIn/>}/>
     <Route path='/signup' element={<Signup/>}/>
     <Route path='/profile' element={<Profile/>}/>
+    <Route path='/createPost' element={<Createpost/>}/>
     </Routes>
     <ToastContainer />
     </BrowserRouter>
