@@ -32,6 +32,8 @@ export default function Signn() {
       progress: undefined,
       theme: "dark",
       });
+
+      
       const Regsemail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 
   const postData = () => {
@@ -60,6 +62,8 @@ export default function Signn() {
       notifyA(data.error)
     }else{
       notifyS(data.message);
+      console.log(data);
+      localStorage.setItem("jwt",(data));
       navigate("/")
     }
     console.log(data);
