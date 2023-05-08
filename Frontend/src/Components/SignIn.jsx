@@ -3,9 +3,12 @@ import "./SignIn.css";
 import logo from "../img/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
+import { useContext } from "react";
+import { LoginContext } from "../Contextapi/Logincontext";
 
 export default function Signn() {
   const navigate = useNavigate();
+  const {setUserLogin} = useContext(LoginContext);
  
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -64,6 +67,7 @@ export default function Signn() {
       notifyS(data.message);
       console.log(data);
       localStorage.setItem("jwt",(data));
+      setUserLogin(true);
       navigate("/")
     }
     console.log(data);

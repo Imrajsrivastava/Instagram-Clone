@@ -2,6 +2,8 @@ import React from 'react'
 import logo from '../img/logo.png'
 import {NavLink,Link} from 'react-router-dom'
 import './Navbar.css'
+import { useContext } from 'react'
+import { LoginContext } from '../Contextapi/Logincontext'
 
 
 import { ReactNode } from 'react';
@@ -42,6 +44,29 @@ import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const {userLogin} = useContext(LoginContext);
+
+
+  const loginfun = ()=>{
+    let token  = localStorage.getItem("jwt");
+    console.log(token);
+    if(token || userLogin){
+      return [
+
+        <NavLink to="/profile">Profile</NavLink>,
+        <NavLink to="/createPost">Create Post</NavLink>
+
+      ]
+    }else{
+      return [
+        <NavLink to="/signup">SignUp</NavLink>,
+        <NavLink to="/signin">SignIn</NavLink>
+
+      ]
+    }
+  }
+
+  // loginfun();
 
   return (
     <>
@@ -61,11 +86,8 @@ export default function Navbar() {
               spacing={4}
               display={{ base: 'none', md: 'flex' }}>
               
-                <NavLink to="/profile">Profile</NavLink>
-                <NavLink to="/signup">SignUp</NavLink>
-                <NavLink to="/signin">SignIn</NavLink>
-                <NavLink to="/createPost">Create Post</NavLink>
               
+             {loginfun()}
             </HStack>
           </HStack>
           <Flex alignItems={'center'}>
@@ -97,11 +119,13 @@ export default function Navbar() {
           <Box pb={4} display={{ md: 'none' }}>
             <Stack as={'nav'} spacing={4}>
             
-            <NavLink to="/profile">Profile</NavLink>
+           {/* <NavLink to="/profile">Profile</NavLink>
                 <NavLink to="/signup">SignUp</NavLink>
                 <NavLink to="/signin">SignIn</NavLink>
-                <NavLink to="/createPost">Create Post</NavLink>
-            
+                <NavLink to="/createPost">Create Post</NavLink> */}
+
+                {loginfun()}
+             
             </Stack>
           </Box>
         ) : null}

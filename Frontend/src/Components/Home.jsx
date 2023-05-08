@@ -3,10 +3,34 @@ import "./Home.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const [data,setData] = useState([]);
+const navigate = useNavigate();
+
+  useEffect(()=>{
+    let token = localStorage.getItem("jwt");
+    if(!token){
+     navigate("/signup")
+    }
+
+    fetch("http://localhost:5000/getallPosts",{
+      headers:{
+        "Authorization":"Bearer "+localStorage.getItem("jwt")
+
+      }
+    }).then(res=>res.json())
+    .then(result=>setData(result))
+    .catch(err=>console.log(err));
+
+  },[])
   return (
     <div className="home">
+      {
+        data.map((posts)=>{
+          return (
+
       <div className="card">
         <div className="card-header">
           <div className="card-pic">
@@ -15,20 +39,20 @@ export default function Home() {
               alt=""
             />
           </div>
-          <h5>Raj</h5>
+          <h5>{posts.postedBy.name}</h5>
         </div>
         {/* card-image  */}
         <div className="card-image">
           <img
-            src="https://media.istockphoto.com/id/1407759041/photo/confident-happy-beautiful-hispanic-student-girl-indoor-head-shot-portrait.jpg?b=1&s=170667a&w=0&k=20&c=--Ei0owZ8KqwVppB5o0bMRG4aNV8VA0HHnsH1YfuxAw="
-            alt=""
+            src={posts.photo}
+            alt="photo"
           />
         </div>
         {/* card-content  */}
         <div className="card-content">
           <span class="material-symbols-outlined">favorite</span><br />
           <p>1 Like</p>
-          <p>This is amazing</p>
+          <p>{posts.body}</p>
         </div>
         {/* add-comment  */}
         <div className="add-comment">
@@ -39,6 +63,9 @@ mood
 <button className="comment">Post</button>
         </div>
       </div>
+          )
+        })
+      }
     </div>
   );
 }

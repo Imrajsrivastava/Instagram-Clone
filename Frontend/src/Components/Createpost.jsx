@@ -92,7 +92,7 @@ export const Createpost = () => {
   })
 
 
-  //saving post in mongodb
+  //saving post in mongodb it is definig in use effect ...
 
 
 // fetch("http://localhost:5000/creatPost",{

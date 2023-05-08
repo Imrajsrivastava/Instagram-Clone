@@ -4,6 +4,19 @@ const mongoose = require("mongoose");
 const requiredLogin = require("../middlewear/requiredLogin");
 const POST = mongoose.model("post");
 
+
+
+router.get("/getallPosts",(req,res)=>{
+  POST.find()
+  .populate("postedBy","_id name")
+  .then(data=>res.json(data))
+  .catch(err=>console.log(err))
+   
+   
+  
+})
+
+
 router.post("/creatPost", requiredLogin, (req, res) => {
   const { body, pic } = req.body;
 
