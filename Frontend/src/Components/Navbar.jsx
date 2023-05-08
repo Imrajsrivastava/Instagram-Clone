@@ -44,7 +44,7 @@ import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const {userLogin} = useContext(LoginContext);
+  const {userLogin,setModalOpen} = useContext(LoginContext);
 
 
   const loginfun = ()=>{
@@ -54,7 +54,12 @@ export default function Navbar() {
       return [
 
         <NavLink to="/profile">Profile</NavLink>,
-        <NavLink to="/createPost">Create Post</NavLink>
+        <NavLink to="/createPost">Create Post</NavLink>,
+        <Link to={""}>
+        <button className="primaryBtn" onClick={() => setModalOpen(true)}>
+          Log Out
+        </button>
+      </Link>
 
       ]
     }else{
