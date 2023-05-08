@@ -41,4 +41,16 @@ router.post("/creatPost", requiredLogin, (req, res) => {
     });
 });
 
+
+
+// mypost show api  
+
+router.get("/myposts",requiredLogin,(req,res)=>{
+  POST.find({postedBy:req.user._id})
+  .populate("postedBy","_id name")
+  .then(mypost=>{
+    res.json(mypost)
+  })
+})
+
 module.exports = router;

@@ -1,0 +1,19 @@
+
+
+.primaryBtn{
+  cursor: pointer;
+  font-weight: bolder;
+  padding: 8px 20px;
+  font-size: 0.7rem;
+  border: none;
+  color: white;
+  background: #db183c;
+  border-radius: 15px;
+  margin-left: 20px;
+  transition: all 0.25s ease;
+}
+
+.primaryBtn:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px -10px rgba(219, 24, 44, 0.6);
+}
