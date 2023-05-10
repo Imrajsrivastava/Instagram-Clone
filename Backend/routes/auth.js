@@ -67,9 +67,16 @@ router.post("/signin", (req, res) => {
         if (match) {
           // return res.status(200).json({ message: "Signed in Successfully" });
           const token = jwt.sign({_id: userlog.id}, jwt_secret);
+
           console.log(token);
           // console.log(userlog.id);
-          return res.json(token);
+          const {_id,name,gmail,username}=userlog
+          
+          console.log({token,user:{_id,name,gmail,username}})
+
+          return res.json({token,user:{_id,name,gmail,username}});
+
+
         } else {
           return res.status(422).json({ error: "invailid password" });
         }

@@ -24,7 +24,43 @@ const navigate = useNavigate();
     .then(result=>setData(result))
     .catch(err=>console.log(err));
 
-  },[])
+  },[data])
+
+  const likePost = (id)=>{
+    fetch("http://localhost:5000/like",{
+      method:"put",
+      headers:{
+        "Content-Type":"application/json",
+        Authorization:"Bearer "+localStorage.getItem("jwt")
+
+
+      },
+      body:JSON.stringify({
+        postId:id
+      })
+    }).then(res=>res.json())
+    .then((result)=>{console.log(result)})
+  }
+
+
+  const unlikePost = (id)=>{
+    fetch("http://localhost:5000/unlike",{
+      method:"put",
+      headers:{
+        "Content-Type":"application/json",
+        Authorization:"Bearer "+localStorage.getItem("jwt")
+
+
+      },
+      body:JSON.stringify({
+        postId:id
+      })
+    }).then(res=>res.json())
+    .then((result)=>{console.log(result)})
+  }
+
+
+
   return (
     <div className="home">
       {
@@ -50,8 +86,15 @@ const navigate = useNavigate();
         </div>
         {/* card-content  */}
         <div className="card-content">
-          <span class="material-symbols-outlined">favorite</span><br />
-          <p>1 Like</p>
+
+
+        {
+          posts.likes.includes(JSON.parse(localStorage.getItem("user"))._id)?(  <span class="material-symbols-outlined material-symbols-outlined-red"  onClick={()=>{unlikePost(posts._id)}}>favorite</span>):(  <span class="material-symbols-outlined" onClick={()=>{likePost(posts._id)}}>favorite</span>)
+        }
+
+          {/* <span class="material-symbols-outlined" onClick={()=>{likePost(posts._id)}}>favorite</span> */}
+          {/* <span class="material-symbols-outlined material-symbols-outlined-red"  onClick={()=>{unlikePost(posts._id)}}>favorite</span> */}
+          <p>{posts.likes.length} Like</p>
           <p>{posts.body}</p>
         </div>
         {/* add-comment  */}
