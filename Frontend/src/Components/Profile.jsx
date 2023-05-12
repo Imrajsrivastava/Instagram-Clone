@@ -1,8 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import "./Profile.css"
+import PostDetail from './PostDetail'
 
 export const Profile = () => {
   const [mypost,setMypost] = useState([])
+    const [show, setShow] = useState(false)
+  const [posts, setPosts] = useState([]);
+
+  const toggleDetails = (posts) => {
+    if (show) {
+      setShow(false);
+    } else {
+      setShow(true);
+      setPosts(posts);
+    }
+  };
+
   useEffect(()=>{
     fetch("http://localhost:5000/myposts",{
       headers:{
@@ -45,16 +58,18 @@ export const Profile = () => {
         mypost.map((post)=>{
           return (
             
-            <img src={post.photo} alt="post" />
+            <img src={post.photo} alt="post" onClick={()=>{toggleDetails(post)}} />
           )
         })
       }
-        {/* <img src="https://images.unsplash.com/photo-1639747280804-dd2d6b3d88ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHByb2ZpbGUlMjBwaWN0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="" />
-        <img src="https://images.unsplash.com/photo-1639747280804-dd2d6b3d88ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHByb2ZpbGUlMjBwaWN0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="" />
-        <img src="https://images.unsplash.com/photo-1639747280804-dd2d6b3d88ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHByb2ZpbGUlMjBwaWN0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="" />
-        <img src="https://images.unsplash.com/photo-1639747280804-dd2d6b3d88ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHByb2ZpbGUlMjBwaWN0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="" />
-        <img src="https://images.unsplash.com/photo-1639747280804-dd2d6b3d88ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHByb2ZpbGUlMjBwaWN0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="" /> */}
+       
       </div>
+
+      {
+        show &&   <PostDetail item={posts} toggleDetails={toggleDetails}/>
+      }
+
+    
     </div>
   )
 }
