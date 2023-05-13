@@ -158,4 +158,17 @@ router.delete("/deletePost/:postId", requiredLogin, (req, res) => {
     });
 });
 
+
+
+// following post..
+
+
+router.get("/myfollows",requiredLogin,(req,res)=>{
+  POST.find({postedBy:{$in:req.user.following}})
+  .populate("postedBy","_id name")
+  .populate("comments.postedBy","_id name")
+  .then(posts=>{return res.status(200).json(posts)})
+  .catch(err=>res.json({error:err}))
+})
+
 module.exports = router;

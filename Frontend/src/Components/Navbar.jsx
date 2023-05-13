@@ -55,6 +55,7 @@ export default function Navbar() {
 
         <NavLink to="/profile">Profile</NavLink>,
         <NavLink to="/createPost">Create Post</NavLink>,
+        <NavLink to="/myfollows">Follow's Post</NavLink>,
         <Link to={""}>
         <button className="primaryBtn" onClick={() => setModalOpen(true)}>
           Log Out

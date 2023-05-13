@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 // import { useNavigate } from "react-router-dom";
 
-export default function Home() {
+export default function Myfollowing() {
   const [data, setData] = useState([]);
   const [comment, setComment] = useState("");
   const [show, setShow] = useState(false);
@@ -24,7 +24,7 @@ export default function Home() {
 
 
    
-    fetch("http://localhost:5000/getallPosts", {
+    fetch("http://localhost:5000/myfollows", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },

@@ -13,6 +13,8 @@ import { Createpost } from './Components/Createpost';
 import { createContext, useState } from 'react';
 import { LoginContext } from './Contextapi/Logincontext';
 import Modal from './Components/Modal';
+import UserProfie from './Components/UserProfie';
+import Myfollowing from './Components/Myfollowing';
 
 
 
@@ -30,8 +32,10 @@ function App() {
     <Route path='/' element={<Home/>}/>
     <Route path='/signin' element={<SignIn/>}/>
     <Route path='/signup' element={<Signup/>}/>
-    <Route path='/profile' element={<Profile/>}/>
+    <Route exact path='/profile' element={<Profile/>}/>
+    <Route path="/profile/:userid" element={<UserProfie/>}></Route>
     <Route path='/createPost' element={<Createpost/>}/>
+    <Route path='/myfollows' element={<Myfollowing/>}/>
     </Routes>
     <ToastContainer />
 
