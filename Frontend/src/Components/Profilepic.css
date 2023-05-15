@@ -1,0 +1,30 @@
+.darkBgPic{
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  position: absolute;
+}
+.centeredPic{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+
+.CancelBtn {
+  cursor: pointer;
+  font-weight: bolder;
+  padding: 9px 18px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  border: none;
+  color: white;
+  background: #0115eb;
+  transition: all 0.25s ease;
+  margin-left: 20px;
+}

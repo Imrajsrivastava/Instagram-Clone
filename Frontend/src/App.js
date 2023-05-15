@@ -15,6 +15,7 @@ import { LoginContext } from './Contextapi/Logincontext';
 import Modal from './Components/Modal';
 import UserProfie from './Components/UserProfie';
 import Myfollowing from './Components/Myfollowing';
+import Profilepic from './Components/Profilepic';
 
 
 
@@ -36,6 +37,7 @@ function App() {
     <Route path="/profile/:userid" element={<UserProfie/>}></Route>
     <Route path='/createPost' element={<Createpost/>}/>
     <Route path='/myfollows' element={<Myfollowing/>}/>
+    <Route path='/profilepic' element={<Profilepic/>}/>
     </Routes>
     <ToastContainer />
 

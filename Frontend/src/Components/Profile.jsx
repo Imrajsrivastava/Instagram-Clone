@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./Profile.css"
 import PostDetail from './PostDetail'
-
+import Profilepic from './Profilepic'
 export const Profile = () => {
   const [mypost,setMypost] = useState([])
     const [show, setShow] = useState(false)
@@ -78,6 +78,10 @@ export const Profile = () => {
 
       {
         show &&   <PostDetail item={posts} toggleDetails={toggleDetails}/>
+      }
+
+      {
+        changepic && <Profilepic chnageProfile={chnageProfile}/>
       }
 
     
