@@ -3,10 +3,12 @@ import "./Profile.css"
 import PostDetail from './PostDetail'
 import Profilepic from './Profilepic'
 export const Profile = () => {
+  var picLink = "https://cdn-icons-png.flaticon.com/128/3177/3177440.png"
   const [mypost,setMypost] = useState([])
     const [show, setShow] = useState(false)
   const [posts, setPosts] = useState([]);
   const [changepic,setChangepic] = useState(false);
+  const [user, setUser] = useState("")
 
   const toggleDetails = (posts) => {
     if (show) {
@@ -26,21 +28,18 @@ export const Profile = () => {
   }
 
   useEffect(()=>{
-    fetch("http://localhost:5000/myposts",{
-      headers:{
-        "Authorization":"Bearer "+localStorage.getItem("jwt")
-
-      }
-    }).then((res)=>{
-      return res.json()
+    fetch(`http://localhost:5000/users/${JSON.parse(localStorage.getItem("user"))._id}`, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
     })
-    .then((data)=>{
-      console.log((data));
-      setMypost(data);
-    })
-    .catch((err)=>{
-      console.log(err);
-    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result)
+        setMypost(result.posts);
+        setUser(result.user)
+        // console.log(mypost);
+      });
   },[])
   return (
     <div className='profile'>
@@ -48,14 +47,15 @@ export const Profile = () => {
         <div className="profile-pic">
           <img 
           onClick={chnageProfile}
-          src="https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="" />
+          src={user.Photo ? user.Photo : picLink} 
+          alt="" />
         </div>
         <div className="profile-data">
           <h1 style={{fontSize:"30px"}}>{JSON.parse(localStorage.getItem("user")).name}</h1>
           <div className="profile-info" style={{display:"flex"}}>
             <p>40 posts</p>
-            <p>400 following</p>
-            <p>600 followers</p>
+            <p>{user.followers ? user.followers.length : "0"} followers</p>
+            <p>{user.following ? user.following.length : "0"} following</p>
           </div>
         </div>
       </div>

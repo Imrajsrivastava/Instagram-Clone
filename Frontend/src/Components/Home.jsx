@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 // import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  var picLink = "https://cdn-icons-png.flaticon.com/128/3177/3177440.png";
   const [data, setData] = useState([]);
   const [comment, setComment] = useState("");
   const [show, setShow] = useState(false);
@@ -116,7 +117,7 @@ export default function Home() {
             <div className="card-header">
               <div className="card-pic">
                 <img
-                  src="https://media.istockphoto.com/id/1388253782/photo/positive-successful-millennial-business-professional-man-head-shot-portrait.jpg?b=1&s=170667a&w=0&k=20&c=KZM6TIhdaJAy28BA9sg0Sn-ZRd160F6HytdAKykza-s="
+                    src={posts.postedBy.Photo ? posts.postedBy.Photo : picLink}
                   alt=""
                 />
               </div>

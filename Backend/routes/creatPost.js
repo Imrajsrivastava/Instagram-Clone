@@ -6,8 +6,9 @@ const POST = mongoose.model("post");
 
 router.get("/getallPosts", (req, res) => {
   POST.find()
-    .populate("postedBy", "_id name")
+    .populate("postedBy", "_id name Photo")
     .populate("comments.postedBy", "_id name")
+    .sort("-createdAt")
     .then((data) => res.json(data))
     .catch((err) => console.log(err));
 });
@@ -40,8 +41,9 @@ router.post("/creatPost", requiredLogin, (req, res) => {
 
 router.get("/myposts", requiredLogin, (req, res) => {
   POST.find({ postedBy: req.user._id })
-    .populate("postedBy", "_id name")
+    .populate("postedBy", "_id name Photo")
     .populate("comments.postedBy", "_id name")
+    .sort("-createdAt")
     .then((mypost) => {
       res.json(mypost);
     });
@@ -165,10 +167,16 @@ router.delete("/deletePost/:postId", requiredLogin, (req, res) => {
 
 router.get("/myfollows",requiredLogin,(req,res)=>{
   POST.find({postedBy:{$in:req.user.following}})
-  .populate("postedBy","_id name")
+  .populate("postedBy","_id name Photo")
   .populate("comments.postedBy","_id name")
   .then(posts=>{return res.status(200).json(posts)})
   .catch(err=>res.json({error:err}))
 })
+
+
+
+
+
+
 
 module.exports = router;
