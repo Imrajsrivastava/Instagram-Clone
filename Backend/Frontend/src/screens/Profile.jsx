@@ -28,7 +28,7 @@ export const Profile = () => {
   }
 
   useEffect(()=>{
-    fetch(`http://localhost:5000/users/${JSON.parse(localStorage.getItem("user"))._id}`, {
+    fetch(`/users/${JSON.parse(localStorage.getItem("user"))._id}`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },

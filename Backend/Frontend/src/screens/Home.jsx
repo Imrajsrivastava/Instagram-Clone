@@ -25,7 +25,7 @@ export default function Home() {
 
 
    
-    fetch("http://localhost:5000/getallPosts", {
+    fetch("/getallPosts", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
@@ -52,7 +52,7 @@ export default function Home() {
   
 
   const likePost = (id) => {
-    fetch("http://localhost:5000/like", {
+    fetch("/like", {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -69,7 +69,7 @@ export default function Home() {
   };
 
   const unlikePost = (id) => {
-    fetch("http://localhost:5000/unlike", {
+    fetch("/unlike", {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -88,7 +88,7 @@ export default function Home() {
 
   // comment add function here 
     const makeComment = (cmt,id) => {
-      fetch("http://localhost:5000/comments", {
+      fetch("/comments", {
         method: "put",
         headers: {
           "Content-Type": "application/json",

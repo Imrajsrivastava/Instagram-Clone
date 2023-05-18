@@ -11,9 +11,9 @@ const {jwt_secret} = require("../keys");
 
 
 
-router.get("/", (req, res) => {
-  res.send("jai sri ram");
-});
+// router.get("/", (req, res) => {
+//   res.send("jai sri ram");
+// });
 
 router.post("/signup", (req, res) => {
   //  console.log( req.body.name);

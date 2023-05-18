@@ -55,7 +55,7 @@ const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,}
     }
 
 
-  fetch("http://localhost:5000/signup",{
+  fetch("/signup",{
     method:"post",
     headers:{
       "Content-Type":"application/json"
