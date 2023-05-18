@@ -1,20 +1,20 @@
-import logo from './logo.svg';
+
 import './App.css';
-// import { Navbar } from './Components/Navbar';
+
 import Navbar from './Components/Navbar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './Components/Home';
+import Home from './screens/Home';
 import SignIn from './Components/SignIn'
 import Signup from './Components/Signup';
-import { Profile } from './Components/Profile';
+import { Profile } from './screens/Profile';
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
-import { Createpost } from './Components/Createpost';
+import { Createpost } from './screens/Createpost';
 import { createContext, useState } from 'react';
 import { LoginContext } from './Contextapi/Logincontext';
 import Modal from './Components/Modal';
 import UserProfie from './Components/UserProfie';
-import Myfollowing from './Components/Myfollowing';
+import Myfollowing from './screens/Myfollowing';
 import Profilepic from './Components/Profilepic';
 
 

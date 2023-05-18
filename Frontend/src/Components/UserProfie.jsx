@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PostDetail from "./PostDetail";
-import "./Profile.css";
+import "../css/Profile.css";
 import { useParams } from "react-router-dom";
 
 export default function UserProfie() {
@@ -125,17 +125,13 @@ export default function UserProfie() {
             <img
               key={pics._id}
               src={pics.photo}
-              // onClick={() => {
-              //     toggleDetails(pics)
-              // }}
+             
               className="item"
             ></img>
           );
         })}
       </div>
-      {/* {show &&
-        <PostDetail item={posts} toggleDetails={toggleDetails} />
-      } */}
+    
     </div>
   );
 }

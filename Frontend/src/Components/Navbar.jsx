@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from '../img/logo.png'
 import {NavLink,Link} from 'react-router-dom'
-import './Navbar.css'
+import '../css/Navbar.css'
 import { useContext } from 'react'
 import { LoginContext } from '../Contextapi/Logincontext'
 

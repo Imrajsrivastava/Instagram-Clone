@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./Profilepic.css"
+import "../css/Profilepic.css"
 
 export default function Profilepic({ chnageProfile }) {
   const hiddenFileInput = useRef(null);

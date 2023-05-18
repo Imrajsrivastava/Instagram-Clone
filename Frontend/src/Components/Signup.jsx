@@ -1,6 +1,6 @@
 import React, {  useState } from "react";
 import logo from "../img/logo.png"
-import "./SignUp.css";
+import "../css/SignUp.css";
 import { Link, useNavigate } from "react-router-dom";
 
 import { toast } from 'react-toastify';

@@ -1,5 +1,5 @@
 import React from "react";
-import "./PostDetail.css";
+import "../css/PostDetail.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
